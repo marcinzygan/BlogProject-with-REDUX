@@ -1,3 +1,9 @@
+import Counter from "./features/counter/Counter.js";
+
 export default function App() {
-  return <h1>REDUX</h1>;
+  return (
+    <main>
+      <Counter />
+    </main>
+  );
 }
