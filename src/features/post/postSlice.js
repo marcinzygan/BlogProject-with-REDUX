@@ -12,8 +12,15 @@ const initialState = [
 const postSlice = createSlice({
   name: "posts",
   initialState,
-  reducers: {},
+  reducers: {
+    postAdded(state, action) {
+      return [...state, action.payload];
+    },
+  },
 });
 
 export const selectAllPosts = (state) => state.posts;
+
+export const { postAdded } = postSlice.actions;
+
 export default postSlice.reducer;
