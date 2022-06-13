@@ -1,9 +1,9 @@
-import Counter from "./features/counter/Counter.js";
+import PostList from "./features/PostList";
 
 export default function App() {
   return (
     <main>
-      <Counter />
+      <PostList />
     </main>
   );
 }
