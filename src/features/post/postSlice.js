@@ -50,12 +50,12 @@ const postSlice = createSlice({
       reducer(state, action) {
         state.posts.push(action.payload);
       },
-      prepare(title, content, userId) {
+      prepare(title, body, userId) {
         return {
           payload: {
             id: nanoid(),
             title,
-            content,
+            body,
             date: new Date().toISOString(),
             userId,
             reactions: {
@@ -77,34 +77,33 @@ const postSlice = createSlice({
       }
     },
   },
-  extraReducers(builder) {
-    builder
-      .addCase(fetchPosts, (state, action) => {
-        state.status = "loading";
-      })
-      .addCase(fetchPosts.fulfilled, (state, action) => {
-        state.status = "succeeded";
-        //Add date and reactions
-        let min = 1;
-        const loadedPosts = action.payload.map((post) => {
-          post.date = sub(new Date(), { minutes: min++ }).toISOString();
-          post.reactions = {
-            thumbsUp: 0,
-            wow: 0,
-            heart: 0,
-            rocket: 0,
-            coffee: 0,
-          };
+  extraReducers: {
+    [fetchPosts.pending]: (state, action) => {
+      state.status = "loading";
+    },
+    [fetchPosts.fulfilled]: (state, action) => {
+      state.status = "succeeded";
+      //Add date and reactions
+      let min = 1;
+      const loadedPosts = action.payload.map((post) => {
+        post.date = sub(new Date(), { minutes: min++ }).toISOString();
+        post.reactions = {
+          thumbsUp: 0,
+          wow: 0,
+          heart: 0,
+          rocket: 0,
+          coffee: 0,
+        };
 
-          return post;
-        });
-        //Add any fetched post to the post array
-        state.posts = state.posts.concat(loadedPosts);
-      })
-      .addCase(fetchPosts.rejected, (state, action) => {
-        state.status = "failed";
-        state.error = action.error.message;
+        return post;
       });
+      //Add any fetched post to the post array
+      state.posts = state.posts.concat(loadedPosts);
+    },
+    [fetchPosts.rejected]: (state, action) => {
+      state.status = "failed";
+      state.error = action.error.message;
+    },
   },
 });
 
