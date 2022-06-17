@@ -1,4 +1,4 @@
-import { createSlice, nanoid, createAsyncThunk } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { sub } from "date-fns";
 import axios from "axios";
 const POSTS_URL = "https://jsonplaceholder.typicode.com/posts";
@@ -42,33 +42,45 @@ export const fetchPosts = createAsyncThunk("posts/fetchPosts", async () => {
   return response.data;
 });
 
+export const addNewPost = createAsyncThunk(
+  "post/addNewPost",
+  async (initialPost) => {
+    try {
+      const response = await axios.post(POSTS_URL, initialPost);
+      return response.data;
+    } catch (error) {
+      return error.message;
+    }
+  }
+);
+
 const postSlice = createSlice({
   name: "posts",
   initialState,
   reducers: {
-    postAdded: {
-      reducer(state, action) {
-        state.posts.push(action.payload);
-      },
-      prepare(title, body, userId) {
-        return {
-          payload: {
-            id: nanoid(),
-            title,
-            body,
-            date: new Date().toISOString(),
-            userId,
-            reactions: {
-              thumbsUp: 0,
-              wow: 0,
-              heart: 0,
-              rocket: 0,
-              coffee: 0,
-            },
-          },
-        };
-      },
-    },
+    // addNewPost: {
+    //   reducer(state, action) {
+    //     state.posts.push(action.payload);
+    //   },
+    //   prepare(title, body, userId) {
+    //     return {
+    //       payload: {
+    //         id: nanoid(),
+    //         title,
+    //         body,
+    //         date: new Date().toISOString(),
+    //         userId,
+    //         reactions: {
+    //           thumbsUp: 0,
+    //           wow: 0,
+    //           heart: 0,
+    //           rocket: 0,
+    //           coffee: 0,
+    //         },
+    //       },
+    //     };
+    //   },
+    // },
     reactionAdded(state, action) {
       const { postId, reaction } = action.payload;
       const existingPost = state.posts.find((post) => post.id === postId);
@@ -103,6 +115,19 @@ const postSlice = createSlice({
     [fetchPosts.rejected]: (state, action) => {
       state.status = "failed";
       state.error = action.error.message;
+    },
+    [addNewPost.fulfilled]: (state, action) => {
+      action.payload.userId = Number(action.payload.userId);
+      action.payload.date = new Date().toISOString();
+      action.payload.reactions = {
+        thumbsUp: 0,
+        wow: 0,
+        heart: 0,
+        rocket: 0,
+        coffee: 0,
+      };
+      console.log(action.payload);
+      state.posts.push(action.payload);
     },
   },
 });
