@@ -21,6 +21,21 @@ export const addNewPost = createAsyncThunk(
       const response = await axios.post(POSTS_URL, initialPost);
       return response.data;
     } catch (error) {
+      return initialPost;
+    }
+  }
+);
+
+export const updatePost = createAsyncThunk(
+  "post/updatePost",
+  async (initialPost) => {
+    const { id } = initialPost;
+    try {
+      console.log(id);
+
+      const response = await axios.put(`${POSTS_URL}/${id}`, initialPost);
+      return response.data;
+    } catch (error) {
       return error.message;
     }
   }
@@ -78,12 +93,24 @@ const postSlice = createSlice({
       console.log(action.payload);
       state.posts.push(action.payload);
     },
+    [updatePost.fulfilled]: (state, action) => {
+      if (!action.payload?.id) {
+        console.log("Could not update");
+        console.log(action.payload);
+        return;
+      }
+      const { id } = action.payload;
+      action.payload.date = new Date().toISOString();
+      const posts = state.posts.filter((post) => post.id !== id);
+      state.posts = [...posts, action.payload];
+    },
   },
 });
 
 export const selectAllPosts = (state) => state.posts.posts;
 export const getPostStatus = (state) => state.posts.status;
 export const getPostsError = (state) => state.posts.error;
+
 export const selectPostById = (state, postId) =>
   state.posts.posts.find((post) => post.id === postId);
 
