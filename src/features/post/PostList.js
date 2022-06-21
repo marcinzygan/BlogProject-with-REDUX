@@ -1,26 +1,12 @@
-import { useSelector, useDispatch } from "react-redux";
-import {
-  selectAllPosts,
-  getPostStatus,
-  getPostsError,
-  fetchPosts,
-} from "./post/postSlice";
+import { useSelector } from "react-redux";
+import { selectAllPosts, getPostStatus, getPostsError } from "./postSlice";
 
-import { useEffect } from "react";
-import PostExcerpt from "./post/PostExcerpt";
+import PostExcerpt from "./PostExcerpt";
 
 const PostList = () => {
-  const dispatch = useDispatch();
-
   const posts = useSelector(selectAllPosts);
   const postsStatus = useSelector(getPostStatus);
   const error = useSelector(getPostsError);
-
-  useEffect(() => {
-    if (postsStatus === "idle") {
-      dispatch(fetchPosts());
-    }
-  }, [postsStatus, dispatch]);
 
   //Sort posts by date to render the new post as first one .
 

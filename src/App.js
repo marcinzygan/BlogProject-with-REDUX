@@ -1,4 +1,4 @@
-import PostList from "./features/PostList";
+import PostList from "./features/post/PostList";
 import AddPostForm from "./features/post/AddPostForm";
 import SinglePostPage from "./features/post/SinglePostPage";
 import EditPostForm from "./features/post/EditPostForm";
