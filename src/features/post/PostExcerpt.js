@@ -3,7 +3,8 @@ import PostAuthor from "./PostAuthor";
 import TimeAgo from "./TimeAgo";
 import ReactionButtons from "./ReactionButtons";
 import { Link } from "react-router-dom";
-const PostExcerpt = ({ post }) => {
+
+let PostExcerpt = ({ post }) => {
   return (
     <article>
       <h3>{post.title}</h3>
@@ -17,5 +18,5 @@ const PostExcerpt = ({ post }) => {
     </article>
   );
 };
-
+PostExcerpt = React.memo(PostExcerpt);
 export default PostExcerpt;
