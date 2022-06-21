@@ -8,21 +8,27 @@ const Header = () => {
   const count = useSelector(getCounter);
   return (
     <header className="header">
-      <h1>Redux Blog</h1>
-      <nav>
-        <ul>
+      <nav className="nav">
+        <ul className="nav__list">
           <li>
-            <Link to="/">Home</Link>
+            <Link className="nav__link" to="/">
+              Home
+            </Link>
           </li>
           <li>
-            <Link to="post">Post</Link>
+            <Link className="nav__link" to="post">
+              Post
+            </Link>
           </li>
           <li>
-            <Link to="user">Users</Link>
+            <Link className="nav__link" to="user">
+              Users
+            </Link>
           </li>
         </ul>
         {/* <button onClick={() => dispatch(increaseCount())}>{count}</button> */}
       </nav>
+      <h1 className="h1">Redux Blog</h1>
     </header>
   );
 };
