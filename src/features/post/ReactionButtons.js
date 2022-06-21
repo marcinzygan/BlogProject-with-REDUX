@@ -4,7 +4,7 @@ import React from "react";
 const reactionEmoji = {
   thumbsUp: "👍",
   wow: "😮",
-  heart: "❤",
+  heart: "🧡",
   rocket: "🚀",
   coffee: "☕",
 };

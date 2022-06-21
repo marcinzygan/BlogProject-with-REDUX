@@ -27,8 +27,8 @@ const PostList = () => {
   }
 
   return (
-    <section>
-      <h2>Posts</h2>
+    <section className="posts__container">
+      <h2 className="posts__h2">Our latest Posts:</h2>
       {content}
     </section>
   );
