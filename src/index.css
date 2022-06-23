@@ -5,6 +5,10 @@
   padding: 0;
   box-sizing: border-box;
 }
+section {
+  padding: 2rem;
+}
+
 .header {
   background-image: url(./img/background.jpg);
   background-position: center;
@@ -17,6 +21,10 @@
   font-size: 3rem;
   color: #fc1576;
   margin-top: 3rem;
+}
+h2 {
+  font-size: 2rem;
+  padding-bottom: 4rem;
 }
 .nav {
   padding-bottom: 1rem;
@@ -31,13 +39,7 @@
   text-decoration: none;
   color: white;
 }
-.posts__container {
-  padding: 2rem;
-}
-.posts__h2 {
-  font-size: 2rem;
-  padding-bottom: 4rem;
-}
+
 .post {
   background-color: #192224;
   padding: 2rem;
@@ -87,16 +89,72 @@
   padding: 0.25rem;
   color: rgb(219, 213, 213);
 }
+
+.form {
+  display: flex;
+  flex-direction: column;
+  max-width: 600px;
+}
+label {
+  padding: 1.5rem 0 0.5rem 0;
+  font-size: 1.2rem;
+}
+textarea {
+  resize: none;
+  height: 200px;
+  width: 100%;
+}
+.form__btn {
+  margin-top: 1rem;
+  text-decoration: none;
+  color: white;
+  font-weight: 700;
+  font-size: 1rem;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border: 1px solid #fc1576;
+  border-radius: 10px;
+  background-color: #192224;
+}
+.authors__ul {
+  font-size: 1.2rem;
+  width: 50%;
+  margin: auto;
+}
+ol {
+  font-size: 1.5rem;
+  width: 50%;
+  margin: auto;
+}
+li {
+  padding-bottom: 1rem;
+}
+a {
+  /* text-decoration: none; */
+  font-size: 1.2rem;
+  color: #192224;
+}
+.author {
+  color: #fc1576;
+}
 @media (min-width: 800px) {
-  .posts__h2 {
+  .h1 {
+    font-size: 5rem;
+  }
+  h2 {
     text-align: center;
     padding-top: 5rem;
     padding-bottom: 7rem;
   }
-
+  .nav__list {
+    gap: 6rem;
+  }
   .post {
     max-width: 600px;
     margin: 0 auto;
     margin-bottom: 2rem;
+  }
+  .form {
+    margin: 0 auto;
   }
 }

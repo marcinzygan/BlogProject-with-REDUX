@@ -51,8 +51,8 @@ const AddPostForm = () => {
 
   return (
     <section>
-      <h2>Add a New Post</h2>
-      <form>
+      <h2 className="form__h2">Add a New Post</h2>
+      <form className="form">
         <label htmlFor="postTitle">Post Title:</label>
         <input
           type="text"
@@ -73,12 +73,18 @@ const AddPostForm = () => {
         </select>
         <label htmlFor="postContent">Content:</label>
         <textarea
+          className="form__content"
           id="postContent"
           name="postContent"
           value={content}
           onChange={onContentChange}
         />
-        <button type="button" onClick={onSavePostClicked} disabled={!canSave}>
+        <button
+          className="form__btn"
+          type="button"
+          onClick={onSavePostClicked}
+          disabled={!canSave}
+        >
           Save Post
         </button>
       </form>

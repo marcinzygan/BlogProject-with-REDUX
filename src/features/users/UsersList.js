@@ -7,15 +7,17 @@ const UsersList = () => {
   const users = useSelector(selectAllusers);
 
   const renderedUsers = users.map((user) => (
-    <li key={user.id}>
-      <Link to={`/user/${user.id}`}>{user.name}</Link>
+    <li className="user__li" key={user.id}>
+      <Link className="user__link" to={`/user/${user.id}`}>
+        {user.name}
+      </Link>
     </li>
   ));
 
   return (
     <section>
-      <h2>Users</h2>
-      <ul>{renderedUsers}</ul>
+      <h2>Authors</h2>
+      <ul className="authors__ul">{renderedUsers}</ul>
     </section>
   );
 };

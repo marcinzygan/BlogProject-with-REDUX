@@ -1,4 +1,5 @@
 import { useSelector } from "react-redux";
+import { nanoid } from "@reduxjs/toolkit";
 import { selectAllPosts, getPostStatus, getPostsError } from "./postSlice";
 
 import PostExcerpt from "./PostExcerpt";
@@ -19,7 +20,7 @@ const PostList = () => {
       .slice()
       .sort((a, b) => b.date.localeCompare(a.date));
     content = orderedPosts.map((post) => (
-      <PostExcerpt key={post.id} post={post} />
+      <PostExcerpt key={nanoid()} post={post} />
     ));
   }
   if (postsStatus === "failed") {

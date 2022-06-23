@@ -2,6 +2,7 @@ import {
   createSlice,
   createAsyncThunk,
   createSelector,
+  nanoid,
 } from "@reduxjs/toolkit";
 import { sub } from "date-fns";
 import axios from "axios";
@@ -22,12 +23,8 @@ export const fetchPosts = createAsyncThunk("posts/fetchPosts", async () => {
 export const addNewPost = createAsyncThunk(
   "post/addNewPost",
   async (initialPost) => {
-    try {
-      const response = await axios.post(POSTS_URL, initialPost);
-      return response.data;
-    } catch (error) {
-      return initialPost;
-    }
+    const response = await axios.post(POSTS_URL, initialPost);
+    return response.data;
   }
 );
 
