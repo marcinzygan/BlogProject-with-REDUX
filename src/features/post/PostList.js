@@ -1,5 +1,4 @@
 import { useSelector } from "react-redux";
-import { nanoid } from "@reduxjs/toolkit";
 import { selectAllPosts, getPostStatus, getPostsError } from "./postSlice";
 
 import PostExcerpt from "./PostExcerpt";

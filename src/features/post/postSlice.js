@@ -2,7 +2,6 @@ import {
   createSlice,
   createAsyncThunk,
   createSelector,
-  nanoid,
 } from "@reduxjs/toolkit";
 import { sub } from "date-fns";
 import axios from "axios";
