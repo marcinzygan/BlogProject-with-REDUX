@@ -18,14 +18,19 @@ const SinglePostPage = () => {
     );
   }
   return (
-    <article>
-      <h2>{post.title}</h2>
-      <p>{post.body}</p>
-      <p>
-        <Link to={`/post/edit/${post.id}`}>Edit Post</Link>
-        <PostAuthor userId={post.userId} />
-        <TimeAgo timestamp={post.date} />
-      </p>
+    <article className="post post__single">
+      <h2 className="post__title">{post.title}</h2>
+      <p className="post__text">{post.body}</p>
+      <div className="post__info">
+        <p className="post__author">
+          <PostAuthor userId={post.userId} />
+          <TimeAgo timestamp={post.date} />
+        </p>
+        <Link className="post__link" to={`/post/edit/${post.id}`}>
+          Edit Post
+        </Link>
+      </div>
+
       <ReactionButtons post={post} />
     </article>
   );

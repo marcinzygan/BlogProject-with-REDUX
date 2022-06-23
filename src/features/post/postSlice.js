@@ -24,6 +24,7 @@ export const addNewPost = createAsyncThunk(
   "post/addNewPost",
   async (initialPost) => {
     const response = await axios.post(POSTS_URL, initialPost);
+    console.log(response.data);
     return response.data;
   }
 );
@@ -36,6 +37,7 @@ export const updatePost = createAsyncThunk(
       console.log(id);
 
       const response = await axios.put(`${POSTS_URL}/${id}`, initialPost);
+
       return response.data;
     } catch (error) {
       // return error.message;

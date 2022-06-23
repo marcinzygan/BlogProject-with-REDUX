@@ -3,6 +3,7 @@
 This application was created as part of online course for REDUX Toolkit
 
 - This application is using jsonplaceholder API to display some fake posts .
+- This fake API only allows one post to be sent to API .
 
 # Featuers added :
 
