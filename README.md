@@ -1,8 +1,8 @@
 # This is Blog project using REDUX as state managment .
 
-This application was created as part of online course for REDUX
+This application was created as part of online course for REDUX Toolkit
 
-This application is using jsonplaceholder API to display some fake posts .
+- This application is using jsonplaceholder API to display some fake posts .
 
 # Featuers added :
 

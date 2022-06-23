@@ -17,12 +17,12 @@ const Header = () => {
           </li>
           <li>
             <Link className="nav__link" to="post">
-              Post
+              Create Post
             </Link>
           </li>
           <li>
             <Link className="nav__link" to="user">
-              Users
+              Authors
             </Link>
           </li>
         </ul>
